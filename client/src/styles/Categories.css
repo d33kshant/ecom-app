@@ -1,0 +1,37 @@
+.categories-main {
+	width: 100%;
+	background: #232f3e;
+}
+
+.categories-container {
+	width: fit-content;
+	overflow: auto;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 8px;
+	overflow: auto;
+	padding: 8px 16px;
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+
+.category-item {
+	color: white;
+	font-weight: 500;
+	text-decoration: none;
+	padding: 4px 8px;
+	white-space: nowrap;
+}
+
+.category-item:hover {
+	outline: 1px solid white;
+	border-radius: 4px;
+}
+
+@media (max-width: 540px) {
+	.categories-container {
+		width: 100%;
+		justify-content: flex-start;
+	}
+}

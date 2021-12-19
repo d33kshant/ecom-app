@@ -1,0 +1,76 @@
+require('dotenv').config()
+
+const PORT = process.env.PORT || 5000
+
+const mongoose = require('mongoose')
+const express = require('express')
+const bcrypt = require('bcrypt')
+
+const User = require('./models/User')
+const Product = require('./models/Product')
+const app = express()
+
+app.use(express.json())
+
+app.get('/', (req, res) => {
+	res.send('Hello from ecom-app')
+})
+
+app.get('/products', async (req, res) => {
+	const { id, cat, page } = req.query
+	if(id) {
+		const product = await Product.findById(id)
+		if(product) {
+			res.json(product)
+		} else {
+			res.json({ error: "Product Not Found" })
+		}
+	} else if (cat) {
+		const products = await Product.find({ category: cat })
+		res.json(products)
+	} else {
+		
+	}
+})
+
+app.post('/login', async (req, res) => {
+	const { email, password } = req.body
+	const user = await User.findOne({ email })
+	
+	if(user) {
+		bcrypt.compare(password, user.password, (err, result) => {
+			if(result) {
+				res.json({
+					email: user.email,
+					name: user.name
+				})
+			} else {
+				res.status(400).json({ error: "Invalid email or password." })
+			}
+		})
+	} else {
+		res.status(400).json({ error: "Invalid email or password." })
+	}
+})
+
+app.post('/signup', async (req, res) => {
+	const { name, email, password } = req.body
+	const hash = await bcrypt.hash(password, 5)
+	
+	const user = await User.findOne({ email })
+	if (!user) {
+		user = new User({name, email, password: hash})
+		user.save().then(doc => {
+			res.json({ result: "Signed up successfully." })
+		}).catch(err=>{
+			res.json({ error: "Failed to sign up." })
+		})
+	} else {
+		res.json({ error: "Email already registred." })
+	}
+})
+
+mongoose.connect(process.env.DB_URI, {}, ()=>{
+	console.log('Connected to database successfully.')
+	app.listen(PORT, _=>console.log('Server listening on port:', PORT))
+} )
