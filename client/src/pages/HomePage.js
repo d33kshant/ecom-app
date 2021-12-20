@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import AppBar from "../components/AppBar"
+import Carousel from "../components/Carousel"
 import Categories from "../components/Categories"
 import { AuthContext } from "../contexts/AuthContext"
 
@@ -16,6 +17,7 @@ const HomePage = () => {
 		<>
 			<AppBar />
 			<Categories />
+			<Carousel />
 		</>
 	)
 }
