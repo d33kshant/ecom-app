@@ -29,7 +29,7 @@
 	border-radius: 4px;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 700px) {
 	.categories-container {
 		width: 100%;
 		justify-content: flex-start;
