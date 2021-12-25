@@ -12,8 +12,8 @@
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
-	padding: 4px 8px;
-	gap: 16px;
+	padding: 4px 0;
+	gap: 8px;
 	max-width: 930px;
 	margin: 0 auto;
 }
@@ -58,7 +58,7 @@
 
 .appbar-actions {
 	display: flex;
-	gap: 16px;
+	gap: 8px;
 	align-items: center;
 }
 
@@ -72,11 +72,6 @@
 	border: 1px solid transparent;
 	padding: 8px;
 	box-sizing: border-box;
-}
-
-.appbar-action:hover {
-	border-color: white;
-	border-radius: 8px;
 }
 
 .appbar-cart-badge {
@@ -94,4 +89,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+@media (max-width: 930px) {
+	.appbar-container {
+		padding: 4px 8px;
+	}
 }
