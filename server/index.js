@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
 
 app.get('/products', async (req, res) => {
 	const { id, cat, page } = req.query
-	if(id) {
+	if (id) {
 		const product = await Product.findById(id)
-		if(product) {
+		if (product) {
 			res.json(product)
 		} else {
 			res.json({ error: "Product Not Found" })
@@ -29,17 +29,17 @@ app.get('/products', async (req, res) => {
 		const products = await Product.find({ category: cat })
 		res.json(products)
 	} else {
-		
+
 	}
 })
 
 app.post('/login', async (req, res) => {
 	const { email, password } = req.body
 	const user = await User.findOne({ email })
-	
-	if(user) {
+
+	if (user) {
 		bcrypt.compare(password, user.password, (err, result) => {
-			if(result) {
+			if (result) {
 				res.json({
 					email: user.email,
 					name: user.name
@@ -56,13 +56,13 @@ app.post('/login', async (req, res) => {
 app.post('/signup', async (req, res) => {
 	const { name, email, password } = req.body
 	const hash = await bcrypt.hash(password, 5)
-	
+
 	const user = await User.findOne({ email })
 	if (!user) {
-		user = new User({name, email, password: hash})
+		user = new User({ name, email, password: hash })
 		user.save().then(doc => {
 			res.json({ result: "Signed up successfully." })
-		}).catch(err=>{
+		}).catch(err => {
 			res.json({ error: "Failed to sign up." })
 		})
 	} else {
@@ -70,7 +70,53 @@ app.post('/signup', async (req, res) => {
 	}
 })
 
-mongoose.connect(process.env.DB_URI, {}, ()=>{
+app.get('/api/v1/product/:id', async (req, res) => {
+	const id = req.params.id
+	if (id) {
+		const product = await Product.findById(id)
+		if (product) {
+			res.json(product)
+		} else {
+			res.json({
+				error: "Invalid product id."
+			})
+		}
+	} else {
+		res.json({
+			error: "Product id is required."
+		})
+	}
+})
+
+app.post('/api/v1/product', async (req, res) => {
+	const product = new Product(req.body)
+	await product.save()
+	res.json({ result: "Saved" })
+})
+
+app.get('/api/v1/products', async (req, res) => {
+	// const { cat: category, sort } = req.query
+	const products = await Product.find({}).limit(10)
+	res.json(products)
+})
+
+app.get('/api/v1/search', async (req, res) => {
+	const { query } = req.query
+	const products = await Product.aggregate([{
+		'$search': {
+			'index': 'default',
+			'text': {
+				'query': query,
+				'path': {
+					'wildcard': '*'
+				}
+			}
+		}
+	}])
+	res.json(products)
+})
+
+mongoose.connect(process.env.DB_URI, {}, () => {
 	console.log('Connected to database successfully.')
-	app.listen(PORT, _=>console.log('Server listening on port:', PORT))
-} )
+	app.listen(PORT, _ => console.log('Server listening on port:', PORT))
+})
