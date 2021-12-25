@@ -5,10 +5,9 @@ const schema = new mongoose.Schema({
 	description: String,
 	brand: String,
 	category: String,
-	tags: [String],
 	options: [String],
 	thumbs: [String], 
-	prince: Number,
+	price: Number,
 	offer: Number
 })
 
