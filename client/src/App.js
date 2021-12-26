@@ -9,6 +9,7 @@ import CartProvider from './contexts/CartContext'
 import CartPage from './pages/CartPage'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import ProductPage from './pages/ProductPage'
 import SearchPage from './pages/SearchPage'
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
 						<Route path="/cart" element={<CartPage />} />
 						<Route path="/login" element={<LoginPage />} />
 						<Route path="/search" element={<SearchPage />} />
+						<Route path="/product/:id" element={<ProductPage />} />
 					</Routes>
 				</Router>
 			</CartProvider>
