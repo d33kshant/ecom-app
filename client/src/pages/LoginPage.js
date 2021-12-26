@@ -2,11 +2,13 @@ import { useContext, useState } from "react"
 import axios from 'axios'
 import { AuthContext } from "../contexts/AuthContext"
 import { Navigate } from "react-router-dom"
+import "../styles/LoginPage.css"
 
 const LoginPage = () => {
 
 	const [state, setState] = useState({ email: "", password: "" })
 	const { user, setUser } = useContext(AuthContext)
+	const [ message, setMessage ] = useState("This is a default message")
 
 	const onInputChange = (event) => {
 		const _state = { ...state }
@@ -34,12 +36,29 @@ const LoginPage = () => {
 	}
 
 	return (
-		<form className="login-form" onSubmit={onFormSubmit} >
-			<input type="text" placeholder="Email" name="email" value={state.email} onChange={onInputChange} />
-			<input type="password" placeholder="Password" name="password" value={state.password} onChange={onInputChange} />
-			<button type="submit">Login</button>
-			<span>Don't have an account ? <a href="/signup">Sign up</a></span>
-		</form>
+		<div className="login-page-main">
+			<div className="login-form-container">
+				<form className="login-form" onSubmit={onFormSubmit} >
+					<input className="login-input-email" type="text" placeholder="Email" name="email" value={state.email} onChange={onInputChange} />
+					<input className="login-input-password" type="password" placeholder="Password" name="password" value={state.password} onChange={onInputChange} />
+					<button className="login-button-submit" type="submit">Login</button>
+					<span className="login-form-text">Don't have an account ? <a className="login-form-signup" href="/signup">Sign up</a></span>
+				</form>
+			</div>
+			<div className="login-message-container" >
+				{
+					message &&
+					<div className="login-message-box" >
+						<p className="login-message" >{message}</p>
+						<button className="login-message-close">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+							</svg>
+						</button>
+					</div>
+				}
+			</div>
+		</div>
 	)
 }
 
