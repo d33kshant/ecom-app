@@ -1,0 +1,13 @@
+.search-page-main {
+	display: flex;
+	width: 100%;
+	height: calc(100% - 50px);
+	justify-content: center;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.search-page-container {
+	width: 100%;
+	max-width: 930px;
+}

@@ -1,0 +1,141 @@
+.product-page-main {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.product-page-container {
+	width: 100%;
+	max-width: 930px;
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	gap: 8px;
+	box-sizing: border-box;
+	background: white;
+	border: 1px solid #dad0ec;
+	border-radius: 8px;
+}
+
+.product-image-section {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.product-image-list {
+	display: flex;
+	gap: 8px;
+	box-sizing: border-box;
+	margin-top: 8px;
+}
+
+.product-image-small {
+	cursor: pointer;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+}
+
+.product-current-image {
+	width: 100%;
+	max-width: 540px;
+	height: 100%;
+	object-fit: cover;
+}
+
+.selected-image-small {
+	border-color: #E47911;
+}
+
+.product-info-section {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.product-info-brand {
+	color: gray;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.product-info-description {
+	max-width: 500px;
+	/* color: darkgray; */
+	margin: 0;
+}
+
+.product-info-name {
+	max-width: 500px;
+	font-family: inherit;
+	/* font-weight: 500; */
+	font-size: 24px;
+	margin: 0;
+}
+
+.product-price-info {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.product-price-mrp {
+	font-weight: 500;
+	font-family: inherit;
+	font-size: 24px;
+}
+
+.product-price-offer {
+	color: green;
+	font-size: 24px;
+}
+
+.product-price-original {
+	color: gray;
+	text-decoration: line-through;
+	font-size: 24px;
+}
+
+.product-option-list {
+	display: flex;
+	gap: 8px;
+}
+
+.product-option-button {
+	/* border-radius: 4px; */
+	border: 1px solid #dad0ec;
+	background: white;
+	padding: 8px 12px;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.selected-product-option {
+	border: 1px solid #E47911;
+	background: #fefaf6;
+	font-weight: 600;
+}
+
+@media (max-width: 768px) {
+	.product-page-container {
+		flex-direction: column;
+	}
+
+	.product-page-main {
+		height: fit-content;
+	}
+
+	/* .product-image-list {
+		width: 100%;
+		justify-content: center;
+	} */
+
+	.product-info-section {
+		width: 100%;
+		max-width: none;
+	}
+}

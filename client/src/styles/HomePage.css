@@ -1,0 +1,15 @@
+.home-page-main {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+}
+
+.home-page-container {
+	width: 100%;
+	max-width: 930px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
