@@ -3,6 +3,7 @@ import AppBar from "../components/AppBar"
 import ProductList from "../components/ProductList"
 import axios from 'axios'
 import ProductCard from "../components/ProductCard"
+import "../styles/SearchPage.css"
 
 const SearchPage = () => {
 	
@@ -18,9 +19,13 @@ const SearchPage = () => {
 	return (
 		<>
 			<AppBar />
-			<ProductList>
-				{result.map(data =><ProductCard {...data} />)}
-			</ProductList>
+			<div className="search-page-main" >
+				<div className="search-page-container" >
+					<ProductList>
+						{result.map(data =><ProductCard {...data} />)}
+					</ProductList>
+				</div>
+			</div>
 		</>
 	)
 }
