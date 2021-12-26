@@ -7,6 +7,7 @@ import ProductCard from "../components/ProductCard"
 import ProductList from "../components/ProductList"
 import { AuthContext } from "../contexts/AuthContext"
 import axios from 'axios'
+import "../styles/HomePage.css"
 
 const HomePage = () => {
 
@@ -28,10 +29,14 @@ const HomePage = () => {
 		<>
 			<AppBar />
 			<Categories />
-			<Carousel />
-			<ProductList>
-				{products.map((product, index) => <ProductCard key={index} {...product} />)}
-			</ProductList>
+			<div className="home-page-main" >
+				<div className="home-page-container" >
+					<Carousel />
+					<ProductList>
+						{products.map((product, index) => <ProductCard key={index} {...product} />)}
+					</ProductList>
+				</div>
+			</div>
 		</>
 	)
 }
