@@ -88,6 +88,21 @@
 	font-size: 24px;
 }
 
+.product-add-to-cart {
+	padding: 8px 12px;
+	box-sizing: border-box;
+	background: #febd69;
+	border: none;
+	border-radius: 4px;
+	font-weight: bold;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.product-add-to-cart:hover {
+	background: #f3a847;
+}
+
 .product-price-offer {
 	color: green;
 	font-size: 24px;
@@ -105,7 +120,7 @@
 }
 
 .product-option-button {
-	/* border-radius: 4px; */
+	border-radius: 4px;
 	border: 1px solid #dad0ec;
 	background: white;
 	padding: 8px 12px;

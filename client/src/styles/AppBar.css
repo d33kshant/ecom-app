@@ -84,8 +84,8 @@
 	height: 20px;
 	width: 20px;
 	position: absolute;
-	top: -20%;
-	right: -10%;
+	top: 0;
+	right: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
