@@ -1,9 +1,10 @@
 // import { useState } from "react"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import AppBar from "../components/AppBar"
 import axios from "axios"
 import "../styles/ProductPage.css"
+import { CartContext } from "../contexts/CartContext"
 
 const ProductPage = () => {
 
@@ -11,6 +12,7 @@ const ProductPage = () => {
 
 	const [currentImage, setCurrentImage] = useState(0)
 	const [currentOption, setCurrentOption] = useState(0)
+	const { addItem } = useContext(CartContext)
 	const [product, setProduct] = useState(null)
 
 	useEffect(() => {
@@ -41,8 +43,9 @@ const ProductPage = () => {
 							</>}
 						</span>
 						<div className="product-option-list" >
-							{ product.options.map((option, index)=> <button onClick={() => setCurrentOption(index)} className={index === currentOption ? "product-option-button selected-product-option" : "product-option-button"} >{option}</button> ) }
+							{ product.options.map((option, index)=> <button key={index} onClick={() => setCurrentOption(index)} className={index === currentOption ? "product-option-button selected-product-option" : "product-option-button"} >{option}</button> ) }
 						</div>
+						<button className="product-add-to-cart" onClick={()=>addItem({ id: product._id, option: product.options[currentOption] })} >Add To Cart</button>
 						<p className="product-info-description">{product.description}</p>
 					</div>
 				</div>
