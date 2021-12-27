@@ -29,16 +29,37 @@ const App = () => {
 	}, [])
 
 	const addItem = item => {
-		console.log(item)
+		const _cart = cart
+		const { id, option } = item
+		
+		for(let i=0; i<_cart.length; i++){
+			if (_cart[i].id === id && _cart[i].option === option){
+				_cart[i].count++
+				window.localStorage.setItem('cart', JSON.stringify(_cart))
+				setCart(_cart)
+				return
+			}
+		}
+		_cart.push({ ...item, count: 1 })
+		window.localStorage.setItem('cart', JSON.stringify(_cart))
+		setCart(_cart)
 	}
 
 	const removeItem = id => {
 		console.log(id)
 	}
 
+	const deleteItem = id => {
+		setCart(cart.filter(item => item.id!=id))
+	}
+
+	const clearCart = _ => {
+		setCart([])
+	}
+
 	return (
 		<AuthProvider value={{ user, setUser }} >
-			<CartProvider value={{cart, addItem, removeItem}} >
+			<CartProvider value={{cart, addItem, removeItem, deleteItem, clearCart}} >
 				<Router>
 					<Routes>
 						<Route path="/" element={<HomePage />} />
