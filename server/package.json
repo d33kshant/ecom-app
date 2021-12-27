@@ -6,7 +6,7 @@
   "author": "d33kshant",
   "license": "MIT",
   "scripts": {
-    "start": "noed index",
+    "start": "node index",
     "dev": "nodemon index"
   },
   "dependencies": {
