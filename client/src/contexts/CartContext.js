@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const CartContext = createContext({ cart: [], addItem: (item)=>{}, removeItem: (id)=>{} })
+export const CartContext = createContext({ cart: [], addItem: item=>{}, removeItem: id=>{}, deleteItem: id=>{}, clearCart: ()=>{} })
 
 const CartProvider = ({children, ...props}) => {
 	return (
