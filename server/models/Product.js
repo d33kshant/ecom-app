@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
 	options: [String],
 	thumbs: [String], 
 	price: Number,
-	offer: Number
+	rate: Number
 })
 
 module.exports = mongoose.model('Product', schema)
