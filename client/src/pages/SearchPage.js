@@ -8,21 +8,31 @@ import "../styles/SearchPage.css"
 const SearchPage = () => {
 	
 	const [result, setResult] = useState([])
+	const [sort, setSort] = useState('asc')
+
+	const onSortOptionChange = (event) => setSort(event.target.value)
 
 	useEffect(() => {
 		// const url = new URLSearchParams(window.location.search)
 		// const query = url.get('query')
-		axios.get(`/api/v1/search${window.location.search}`).then(res => setResult(res.data))
+		axios.get(`/api/v1/search${window.location.search}&sort=${sort}`).then(res => setResult(res.data))
 		return () => setResult([])
-	}, [])
+	}, [sort])
 
 	return (
 		<>
 			<AppBar />
 			<div className="search-page-main" >
 				<div className="search-page-container" >
+					<div className="search-page-header" >
+						<h3 className="search-page-header-title">Results for "{(new URLSearchParams(window.location.search)).get('query')}"</h3>
+						<select onChange={onSortOptionChange} className="search-page-sort-options" >
+							<option value="asc" >Price low to high</option>
+							<option value="desc" >Price high to low</option>
+						</select>
+					</div>
 					<ProductList>
-						{result.map(data =><ProductCard {...data} />)}
+						{result.map((data, index) =><ProductCard key={index} {...data} />)}
 					</ProductList>
 				</div>
 			</div>
