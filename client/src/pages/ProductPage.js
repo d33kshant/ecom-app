@@ -35,10 +35,10 @@ const ProductPage = () => {
 						<p className="product-info-name" >{product.name}</p>
 						<p className="product-info-brand" >{product.brand}</p>
 						<span className="product-price-info">
-							<span className="product-price-mrp">{product.price - ((product.offer*product.price)/100)}₹</span>
-							{product.offer > 0 && 
+							<span className="product-price-mrp">{product.rate}₹</span>
+							{product.price !== product.rate && 
 							<>
-							• <span className="product-price-offer">{product.offer}% off</span> •
+							• <span className="product-price-offer">{Math.trunc((product.rate / product.price) * 100)}% off</span> •
 							<span className="product-price-original">{product.price}₹</span>
 							</>}
 						</span>
