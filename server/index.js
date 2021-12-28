@@ -101,18 +101,20 @@ app.get('/api/v1/products', async (req, res) => {
 })
 
 app.get('/api/v1/search', async (req, res) => {
-	const { query } = req.query
+	const { query, sort } = req.query
+	const _sort = sort === 'desc' ? { rate: -1 } : { rate: 1 }
+
 	const products = await Product.aggregate([{
-		'$search': {
-			'index': 'default',
-			'text': {
-				'query': query,
-				'path': {
-					'wildcard': '*'
+		$search: {
+			index: 'default',
+			text: {
+				query: query,
+				path: {
+					wildcard: '*'
 				}
 			}
 		}
-	}])
+	}]).sort(_sort)
 	res.json(products)
 })
 
