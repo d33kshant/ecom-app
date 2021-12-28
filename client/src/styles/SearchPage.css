@@ -11,3 +11,27 @@
 	width: 100%;
 	max-width: 930px;
 }
+
+.search-page-header {
+	display: flex;
+	margin-bottom: 8px;
+}
+
+.search-page-header-title {
+	margin: 0;
+	flex: 1;
+	font-family: inherit;
+	font-size: 24px;
+}
+
+.search-page-sort-options {
+	background: white;
+	border: 1px solid #dad0ec;
+	font-family: inherit;
+	color: #666666;
+	font-size: 14px;
+	outline: none;
+	border-radius: 4px;
+	/* padding: 4px 0;
+	box-sizing: border-box; */
+}
