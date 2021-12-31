@@ -3,14 +3,15 @@ import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../contexts/CartContext'
 import "../styles/CartItem.css"
 
-const CartItem = ({productId, count, option}) => {
+const CartItem = ({productId, count, option, callback}) => {
 	
 	const [product, setProduct] = useState(null)
 	const { dispatch } = useContext(CartContext)
 
 	useEffect(() => {
-		axios.get(`/api/v1/product/${productId}`).then(res => setProduct(res.data))
+		axios.get(`/api/v1/product/${productId}`).then(res =>{ callback(res.data.rate*count, res.data.price*count);setProduct(res.data)})
 	}, [productId])
+
 
 	return (
 		<div className="cart-item-container" >
