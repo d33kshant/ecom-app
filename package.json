@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon --ignore ./client/"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
