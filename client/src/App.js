@@ -69,9 +69,6 @@ const App = () => {
 		}
 	}, [])
 
-	useEffect(() => {
-	}, [cart])
-
 	return (
 		<AuthProvider value={{ user, setUser }} >
 			<CartProvider value={{cart, dispatch}} >
