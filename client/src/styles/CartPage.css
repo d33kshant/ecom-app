@@ -36,6 +36,35 @@
 	display: flex;
 	flex-direction: column-reverse;
 	gap: 8px;
+	flex: 1;
+}
+
+.cart-info-row {
+	display: flex;
+	margin: 4px 0;
+}
+
+.cart-info-row p {
+	margin: 0;
+}
+
+.cart-info-row-title {
+	flex: 1;
+}
+
+.cart-item-price-info {
+	font-weight: 500;
+}
+
+.cart-item-original-price-info {
+	text-decoration: line-through;
+	color: gray;
+	font-weight: 500;
+}
+
+.cart-info-total-savings {
+	font-weight: 500;
+	color: green;
 }
 
 @media (max-width: 640px) {
