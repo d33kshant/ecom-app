@@ -45,7 +45,7 @@ const ProductPage = () => {
 						<div className="product-option-list" >
 							{ product.options.map((option, index)=> <button key={index} onClick={() => setCurrentOption(index)} className={index === currentOption ? "product-option-button selected-product-option" : "product-option-button"} >{option}</button> ) }
 						</div>
-						<button className="product-add-to-cart" onClick={()=>{ console.log({ id: productID, option: product.options[currentOption] });dispatch({ type: 'ADD_ITEM', payload: { id: productID, option: product.options[currentOption] } })}} >Add To Cart</button>
+						<button className="product-add-to-cart" onClick={()=>{dispatch({ type: 'ADD_ITEM', payload: { id: productID, option: product.options[currentOption] } })}} >Add To Cart</button>
 						<p className="product-info-description">{product.description}</p>
 					</div>
 				</div>
