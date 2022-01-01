@@ -18,7 +18,7 @@ const ProductPage = () => {
 	useEffect(() => {
 		axios.get(`/api/v1/product/${productID}`).then(res => setProduct(res.data))
 		return ()=>setProduct(null)
-	}, [])
+	}, [productID])
 
 	return (
 		<>
