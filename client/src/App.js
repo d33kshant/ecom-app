@@ -4,6 +4,7 @@ import {
 	Routes,
 	Route
 } from 'react-router-dom'
+import Footer from './components/Footer'
 import AuthProvider from './contexts/AuthContext'
 import CartProvider from './contexts/CartContext'
 import CartPage from './pages/CartPage'
@@ -44,6 +45,9 @@ const reducer = (state=[], action) => {
 				}
 			}
 			return save(state)
+		case 'DELETE_ITEM':
+			const { id: _id, option: _option } = action.payload
+			return save(state.filter(item=>(item.id !== _id || item.option !== _option)))
 		case 'CLEAR':
 			return save([])
 		case 'RESTORE':
@@ -70,19 +74,24 @@ const App = () => {
 	}, [])
 
 	return (
-		<AuthProvider value={{ user, setUser }} >
-			<CartProvider value={{cart, dispatch}} >
-				<Router>
-					<Routes>
-						<Route path="/" element={<HomePage />} />
-						<Route path="/cart" element={<CartPage />} />
-						<Route path="/login" element={<LoginPage />} />
-						<Route path="/search" element={<SearchPage />} />
-						<Route path="/product/:id" element={<ProductPage />} />
-					</Routes>
-				</Router>
-			</CartProvider>
-		</AuthProvider>
+		<>
+			<div className="app-main">
+				<AuthProvider value={{ user, setUser }} >
+					<CartProvider value={{cart, dispatch}} >
+						<Router>
+							<Routes>
+								<Route path="/" element={<HomePage />} />
+								<Route path="/cart" element={<CartPage />} />
+								<Route path="/login" element={<LoginPage />} />
+								<Route path="/search" element={<SearchPage />} />
+								<Route path="/product/:id" element={<ProductPage />} />
+							</Routes>
+						</Router>
+					</CartProvider>
+				</AuthProvider>
+			</div>
+			<Footer />
+		</>
 	)
 }
 
