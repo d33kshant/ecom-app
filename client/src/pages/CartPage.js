@@ -26,7 +26,7 @@ const CartPage = () => {
 	return (
 		<>
 			<AppBar />
-			<div className=" cart-page-main">
+			<div className="cart-page-main">
 				<div className="cart-page-container">
 					<div className="cart-items-list" >
 						{ cart.map(item => <CartItem callback={addPrice} key={item.id} productId={item.id} count={item.count} option={item.option} />) }
@@ -45,10 +45,7 @@ const CartPage = () => {
 							<p className="cart-info-row-title">Total Savings:</p>
 							<p className="cart-info-total-savings">{Math.trunc(((original-price)/original)*100)}%</p>
 						</span>
-						<span className="cart-info-row">
-							<p className="cart-info-row-title" >Original Total:</p>
-							<p className="cart-item-original-price-info">{original}</p>
-						</span>
+						<button className="cart-checkout-button" >Proceed to checkout</button>
 					</div>
 				</div>
 			</div>
