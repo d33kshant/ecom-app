@@ -29,7 +29,7 @@ const reducer = (state=[], action) => {
 				}
 			}
 			_state.push({...item, count: 1})
-			return _state
+			return save(_state)
 		case 'REMOVE_ITEM':
 			const { id, option } = action.payload
 			const state_ = state
