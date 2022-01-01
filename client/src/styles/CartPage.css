@@ -67,6 +67,24 @@
 	color: green;
 }
 
+.cart-checkout-button {
+	font-family: inherit;
+	padding: 4px 0;
+	margin-top: 8px;
+	width: 100%;
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: uppercase;
+	border-radius: 4px;
+	cursor: pointer;
+	border: none;
+	background: #febd69;
+}
+
+.cart-checkout-button:hover {
+	background: #f3a847;
+}
+
 @media (max-width: 640px) {
 	.cart-page-container {
 		flex-direction: column;

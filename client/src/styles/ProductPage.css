@@ -94,9 +94,11 @@
 	background: #febd69;
 	border: none;
 	border-radius: 4px;
-	font-weight: bold;
 	cursor: pointer;
 	text-transform: uppercase;
+	font-weight: 500;
+	font-family: inherit;
+	font-size: 16px;
 }
 
 .product-add-to-cart:hover {
