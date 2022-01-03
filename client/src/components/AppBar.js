@@ -39,7 +39,7 @@ const AppBar = () => {
 		<div className="appbar-main" >
 			<div className="appbar-container" >
 				<a href="/" className="appbar-title" >
-					<img height="28px" src="/icon.png" />
+					<img alt="ecom-app logo" height="28px" src="/icon.png" />
 				</a>
 				<form onSubmit={onFormSubmit} className='appbar-search-field'>
 					<input onChange={onInputChange} type="text" value={search} className="appbar-search-input" />
