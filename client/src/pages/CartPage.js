@@ -43,7 +43,7 @@ const CartPage = () => {
 						</span>
 						<span className="cart-info-row">
 							<p className="cart-info-row-title">Total Savings:</p>
-							<p className="cart-info-total-savings">{Math.trunc(((original-price)/original)*100)}%</p>
+							<p className="cart-info-total-savings">{Math.trunc(((original-price)/original)*100) || 0}%</p>
 						</span>
 						<button className="cart-checkout-button" >Proceed to checkout</button>
 					</div>
