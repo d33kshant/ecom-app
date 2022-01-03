@@ -7,7 +7,7 @@ const ProductCard = ({ name, brand, _id, thumbs, price, rate }) => {
 			<div className="product-card-info" >
 				<p className="product-card-mrp" >{rate}₹</p>
 				{ price !== rate && <span className="product-card-price-info" >
-					<span className="product-card-offer" >  {Math.trunc((rate / price) * 100)}% off  </span>
+					<span className="product-card-offer" >  {Math.trunc(((price - rate) / price) * 100)}% off  </span>
 					•
 					<span className="product-card-price" >{price}₹</span>
 				</span>}
