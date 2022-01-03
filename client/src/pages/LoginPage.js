@@ -18,7 +18,7 @@ const LoginPage = () => {
 
 	const onFormSubmit = (event) => {
 		
-		axios.post('/login', state).then(response => {
+		axios.post('api/v1/login', state).then(response => {
 			const { email, name, error } = response.data
 			if (error) {
 				setMessage(error)
