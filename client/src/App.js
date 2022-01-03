@@ -26,11 +26,11 @@ const reducer = (state=[], action) => {
 			for (let i = 0; i < state.length; i++){
 				if(_state[i].id === item.id && _state[i].option === item.option){
 					_state[i].count++
-					return save(_state)
+					return save([..._state])
 				}
 			}
 			_state.push({...item, count: 1})
-			return save(_state)
+			return save([..._state])
 		case 'REMOVE_ITEM':
 			const { id, option } = action.payload
 			const state_ = state
@@ -40,14 +40,14 @@ const reducer = (state=[], action) => {
 						return save([...state_.slice(0, i), ...state_.slice(i+1, state_.length)])
 					}else{
 						state_[i].count--
-						return save(state_)
+						return save([...state_])
 					}
 				}
 			}
 			return save(state)
 		case 'DELETE_ITEM':
 			const { id: _id, option: _option } = action.payload
-			return save(state.filter(item=>(item.id !== _id || item.option !== _option)))
+			return save([...state.filter(item=>(item.id !== _id || item.option !== _option))])
 		case 'CLEAR':
 			return save([])
 		case 'RESTORE':
