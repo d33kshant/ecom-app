@@ -38,7 +38,7 @@ const Carousel = () => {
 					</svg>
 				</button>
 				<div className="carousel-image-indicators" >
-					{ images.map((item, i)=><div onClick={()=>setIndex(i)} className={ i === index ? "carousel-current-indicator" : "carousel-image-indicator" } />) }
+					{ images.map((item, i)=><div key={i} onClick={()=>setIndex(i)} className={ i === index ? "carousel-current-indicator" : "carousel-image-indicator" } />) }
 				</div>
 			</div>
 		</div>
