@@ -34,7 +34,7 @@ const CartPage = () => {
 			<div className="cart-page-main">
 				<div className="cart-page-container">
 					<div className="cart-items-list" >
-						{ cart.map(item => <CartItem key={item.id} productId={item.id} count={item.count} option={item.option} />) }
+						{ cart.length > 0 ? cart.map(item => <CartItem key={item.id} productId={item.id} count={item.count} option={item.option} />) : <p className="empty-cart-placeholder" >Your cart is empty.</p> }
 					</div>
 					<div className="cart-items-info" >
 						<p className="cart-info-title" >Your Cart</p>
