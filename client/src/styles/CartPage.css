@@ -23,6 +23,8 @@
 	padding: 8px;
 	box-sizing: border-box;
 	height: max-content;
+	position: sticky;
+    top: 58px;
 }
 
 .cart-info-title {
