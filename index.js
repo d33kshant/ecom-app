@@ -14,7 +14,7 @@ const app = express()
 app.use(express.json())
 app.use(express.static('./client/build'))
 
-app.post('/login', async (req, res) => {
+app.post('/api/v1/login', async (req, res) => {
 	const { email, password } = req.body
 	const user = await User.findOne({ email })
 	
@@ -34,11 +34,11 @@ app.post('/login', async (req, res) => {
 	}
 })
 
-app.post('/signup', async (req, res) => {
+app.post('/api/v1/signup', async (req, res) => {
 	const { name, email, password } = req.body
 	const hash = await bcrypt.hash(password, 5)
 	
-	const user = await User.findOne({ email })
+	let user = await User.findOne({ email })
 	if (!user) {
 		user = new User({ name, email, password: hash })
 		user.save().then(doc => {
