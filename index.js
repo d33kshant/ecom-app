@@ -12,7 +12,7 @@ const Product = require('./models/Product')
 const app = express()
 
 app.use(express.json())
-app.use(express.static('./client/build'))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.post('/api/v1/login', async (req, res) => {
 	const { email, password } = req.body
@@ -76,7 +76,6 @@ app.post('/api/v1/product', async (req, res) => {
 })
 
 app.get('/api/v1/products', async (req, res) => {
-	// const { cat: category, sort } = req.query
 	const products = await Product.find({}).limit(10)
 	res.json(products)
 })
