@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon --ignore ./client/"
+    "dev": "nodemon --ignore ./client/",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
