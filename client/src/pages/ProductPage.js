@@ -38,14 +38,14 @@ const ProductPage = () => {
 							<span className="product-price-mrp">{product.rate}₹</span>
 							{product.price !== product.rate && 
 							<>
-							• <span className="product-price-offer">{Math.trunc((product.rate / product.price) * 100)}% off</span> •
+							• <span className="product-price-offer">{Math.trunc(((product.price - product.rate) / product.price) * 100)}% off</span> •
 							<span className="product-price-original">{product.price}₹</span>
 							</>}
 						</span>
 						<div className="product-option-list" >
 							{ product.options.map((option, index)=> <button key={index} onClick={() => setCurrentOption(index)} className={index === currentOption ? "product-option-button selected-product-option" : "product-option-button"} >{option}</button> ) }
 						</div>
-						<button className="product-add-to-cart" onClick={()=>{dispatch({ type: 'ADD_ITEM', payload: { id: productID, option: product.options[currentOption] } })}} >Add To Cart</button>
+						<button className="product-add-to-cart" onClick={()=>{dispatch({ type: 'ADD_ITEM', payload: { id: productID, option: product.options[currentOption], price: product.rate, original: product.price } })}} >Add To Cart</button>
 						<p className="product-info-description">{product.description}</p>
 					</div>
 				</div>
