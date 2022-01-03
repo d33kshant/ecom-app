@@ -19,13 +19,18 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
+	padding: 16px;
+	box-sizing: border-box;
 }
 
 .login-message-box {
 	width: 100%;
-	max-width: 450px;
+	max-width: 350px;
 	background: white;
+	color: #842029;
+	background: #f8d7da;
 	border-radius: 8px;
+	border: 1px solid #f5c2c7;
 	display: flex;
 	overflow: hidden;
 }
@@ -39,7 +44,8 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    max-width: 450px;
+    max-width: 350px;
+	width: 100%;
     gap: 8px;
     padding: 16px;
     box-sizing: border-box;
@@ -47,6 +53,12 @@
 	border-radius: 8px;
 	/* background-color: red; */
 	background: white;
+}
+
+.login-form-title {
+	margin: 8px 0;
+	font-family: inherit;
+	font-weight: 500;
 }
 
 .login-input-email, .login-input-password {
@@ -66,6 +78,7 @@
 	padding: 6px 12px;
 	border: none;
 	border-radius: 4px;
+	text-transform: uppercase;
 }
 
 .login-button-submit:hover {
@@ -74,4 +87,17 @@
 
 .login-form-signup {
 	text-decoration: none;
+}
+
+.login-message-close {
+	background: none;
+	border: none;
+	font-size: 24px;
+	font-weight: 500;
+	font-family: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 8px;
+	cursor: pointer;
 }

@@ -35,6 +35,7 @@
 .cart-items-list {
 	display: flex;
 	flex-direction: column-reverse;
+	justify-content: flex-end;
 	gap: 8px;
 	flex: 1;
 }
