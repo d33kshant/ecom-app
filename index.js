@@ -26,11 +26,11 @@ app.post('/login', async (req, res) => {
 					name: user.name
 				})
 			} else {
-				res.status(400).json({ error: "Invalid email or password." })
+				res.json({ error: "Invalid email or password." })
 			}
 		})
 	} else {
-		res.status(400).json({ error: "Invalid email or password." })
+		res.json({ error: "Invalid email or password." })
 	}
 })
 
