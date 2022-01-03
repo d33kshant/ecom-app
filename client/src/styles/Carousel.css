@@ -35,6 +35,8 @@
 	box-sizing: border-box;
 	cursor: pointer;
 	z-index: 5;
+	opacity: 0;
+	transition: all 0.3s ease;
 }
 
 .carousel-button-left {
@@ -73,4 +75,12 @@
 
 .carousel-current-indicator {
 	background: white;
+}
+
+.carousel-container:hover > .carousel-button-right {
+	opacity: 1;
+}
+
+.carousel-container:hover > .carousel-button-left {
+	opacity: 1;
 }
