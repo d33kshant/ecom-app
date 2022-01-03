@@ -19,21 +19,24 @@ const SearchPage = () => {
 		return () => setResult([])
 	}, [sort])
 
+	const query = (new URLSearchParams(window.location.search)).get('query')
+
 	return (
 		<>
 			<AppBar />
 			<div className="search-page-main" >
 				<div className="search-page-container" >
-					<div className="search-page-header" >
-						<h3 className="search-page-header-title">Results for "{(new URLSearchParams(window.location.search)).get('query')}"</h3>
+					{ result.length > 0 && <div className="search-page-header" >
+						<h3 className="search-page-header-title">Results for "{query}"</h3>
 						<select onChange={onSortOptionChange} className="search-page-sort-options" >
 							<option value="asc" >Price low to high</option>
 							<option value="desc" >Price high to low</option>
 						</select>
-					</div>
+					</div>}
+					{ result.length > 0 ? 
 					<ProductList>
 						{result.map((data, index) =><ProductCard key={index} {...data} />)}
-					</ProductList>
+					</ProductList> : <p className="empty-result-placeholder" >No result found for "{query}"</p>}
 				</div>
 			</div>
 		</>
