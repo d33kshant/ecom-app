@@ -35,3 +35,17 @@
 	/* padding: 4px 0;
 	box-sizing: border-box; */
 }
+
+.empty-result-placeholder {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #dad0ce;
+	background: white;
+	padding: 16px;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin: 0;
+	font-weight: 500;
+	font-family: inherit;
+	font-size: 16px;
+}

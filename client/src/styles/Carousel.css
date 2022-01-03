@@ -84,3 +84,13 @@
 .carousel-container:hover > .carousel-button-left {
 	opacity: 1;
 }
+
+@media (max-width: 700px) {
+	.carousel-button-right {
+		display: unset;
+	}
+
+	.carousel-button-left {
+		display: unset;
+	}
+}
